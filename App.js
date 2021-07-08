@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { axios } from "axios";
 
 // const url = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=yourkey`
 
@@ -32,6 +31,7 @@ export default function App() {
 
 	// }, [])
 
+	const [books, setBooks] = useState([])
 
 	// Source: https://dmitripavlutin.com/javascript-fetch-async-await/
 	async function fetchBooks() {
@@ -41,7 +41,8 @@ export default function App() {
 	}
 
 	fetchBooks().then(books => {
-		console.log(books.results);
+		console.log(books.results.books);
+		setBooks(books.results.books);
 		// return books.results;
 	})
 
@@ -80,6 +81,7 @@ export default function App() {
 
 			<Text>Books</Text>
 
+			console.log(books.results.books);
 
 			{books.map((book) => {
 				// const {age_group, author, book_image, buy_links, description, price, primary_isbn10, publisher, rank, title} = book
