@@ -31,20 +31,22 @@ export default function App() {
 
 	// }, [])
 
-	const [books, setBooks] = useState([])
+	// const [books, setBooks] = useState([{}])
 
 	// Source: https://dmitripavlutin.com/javascript-fetch-async-await/
 	async function fetchBooks() {
 		const response = await fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=BB8BqGACHA9HPxtAblxoX55uesGNfYKj');
-		const books = await response.json();
-		return books
+		const booksPromise = await response.json();
+		// console.log(booksPromise) 
+		return booksPromise // books is a promise
 	}
 
-	fetchBooks().then(books => {
-		console.log(books.results.books);
-		setBooks(books.results.books);
+	
+	fetchBooks().then(booksResults => {
+		console.log(booksResults.results.books); // this is the books object
+		// setBooks(booksResults.results.books);
 		// return books.results;
-	})
+	});
 
 
 	// const App = () => {
@@ -81,9 +83,7 @@ export default function App() {
 
 			<Text>Books</Text>
 
-			console.log(books.results.books);
-
-			{books.map((book) => {
+			{/* {books.map((book) => {
 				// const {age_group, author, book_image, buy_links, description, price, primary_isbn10, publisher, rank, title} = book
 				const { rank, title } = book
 
@@ -94,7 +94,7 @@ export default function App() {
 					</View>
 
 				)
-			})}
+			})} */}
 
 
 			<StatusBar style="auto" />
