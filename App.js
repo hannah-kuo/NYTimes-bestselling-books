@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 // const url = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=yourkey`
 
@@ -92,15 +92,22 @@ export default function App() {
 			<Text>Weekly New York Times Bestselling Books Top 15:</Text>
 
 			{books.map((book) => {
-				// const {age_group, author, book_image, buy_links, description, price, primary_isbn10, publisher, rank, title} = book
-				const { rank, title } = book
+				const {age_group, author, book_image, buy_links, description, price, primary_isbn10, publisher, rank, title} = book
+				// const { rank, title } = book
 
 				return (
 
 					<View key={rank}>
 						<Text>{book.title}</Text>
-					</View>
 
+						<Image
+							style={styles.bookCover}
+							source={{uri: book.book_image}}
+							
+						/>
+
+					</View>
+					
 				)
 			})}
 
@@ -117,4 +124,8 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
+	bookCover: {
+		width: 200,
+		height: 300,
+	  },
 });
