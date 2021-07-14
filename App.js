@@ -50,7 +50,7 @@ export default function App() {
 			
 			// return books.results;
 		});
-		
+
 	}, [])
 
 	console.log(books)
@@ -89,9 +89,9 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 
-			<Text>Books</Text>
+			<Text>Weekly New York Times Bestselling Books Top 15:</Text>
 
-			{/* {books.map((book) => {
+			{books.map((book) => {
 				// const {age_group, author, book_image, buy_links, description, price, primary_isbn10, publisher, rank, title} = book
 				const { rank, title } = book
 
@@ -102,7 +102,7 @@ export default function App() {
 					</View>
 
 				)
-			})} */}
+			})}
 
 
 			<StatusBar style="auto" />
