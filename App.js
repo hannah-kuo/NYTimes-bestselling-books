@@ -56,9 +56,9 @@ export default function App() {
 
 				return (
 
-					<View key={rank}>
+					<View key={rank} style={styles.container}>
 						<Text>{book.title}</Text>
-						<Text>{book.description}</Text>
+						<Text>Description: {book.description}</Text>
 						<Image
 							style={styles.bookCover}
 							source={{uri: book.book_image}}
