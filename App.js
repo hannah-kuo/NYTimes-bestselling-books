@@ -31,22 +31,30 @@ export default function App() {
 
 	// }, [])
 
-	// const [books, setBooks] = useState([{}])
+	const [books, setBooks] = useState([{}])
 
 	// Source: https://dmitripavlutin.com/javascript-fetch-async-await/
-	async function fetchBooks() {
-		const response = await fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=BB8BqGACHA9HPxtAblxoX55uesGNfYKj');
-		const booksPromise = await response.json();
-		// console.log(booksPromise) 
-		return booksPromise // books is a promise
-	}
 
+	useEffect(() => {
+		async function fetchBooks() {
+			const response = await fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=BB8BqGACHA9HPxtAblxoX55uesGNfYKj');
+			const booksPromise = await response.json();
+			// console.log(booksPromise) 
+			return booksPromise // books is a promise
+		}
 	
-	fetchBooks().then(booksResults => {
-		console.log(booksResults.results.books); // this is the books object
-		// setBooks(booksResults.results.books);
-		// return books.results;
-	});
+		
+		fetchBooks().then(booksResults => {
+			console.log(booksResults.results.books); // this is the books object
+			setBooks(booksResults.results.books);
+			
+			// return books.results;
+		});
+		
+	}, [])
+
+	console.log(books)
+	
 
 
 	// const App = () => {
