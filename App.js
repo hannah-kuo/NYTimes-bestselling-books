@@ -31,7 +31,7 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 
-			<Text style={styles.pageTitle}>Weekly New York Times Top 15 Bestsellers:</Text>
+			<Text style={styles.pageTitle}>The New York Times Weekly Bestsellers:</Text>
 
 			{books.map((book) => {
 				const {
@@ -66,7 +66,7 @@ export default function App() {
 							<Text>{publisher}{"\n"}</Text>
 							<Text style={styles.boldText}>ISBN: </Text>
 							<Text>{primary_isbn10}{"\n"}</Text>
-							<Text style={styles.boldText}>Weeks on List:: </Text>
+							<Text style={styles.boldText}>Weeks on List: </Text>
 							<Text>{weeks_on_list}</Text>
 						</Text>
 
