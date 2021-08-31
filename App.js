@@ -31,8 +31,8 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 
-			<Text style={styles.pageTitle}>The New York Times Weekly Bestsellers:</Text>
-
+			<Text style={styles.pageTitle}>The New York Times Weekly Bestselling Hardcover Fiction:</Text>
+			
 			{books.map((book) => {
 				const {
 					author,
