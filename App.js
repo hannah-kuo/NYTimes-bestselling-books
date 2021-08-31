@@ -37,7 +37,7 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 
-			<Text>Weekly New York Times Bestselling Books Top 15:</Text>
+			<Text style={styles.pageTitle}>Weekly New York Times Top 15 Bestsellers:</Text>
 
 			{books.map((book) => {
 				const {
@@ -89,12 +89,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	container: {
-		// fontFamily: "verdana",
 		flex: 1,
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
 		margin: "20px",
+	},
+	pageTitle: {
+		fontFamily: "Lucida Handwriting",
+		fontWeight: "bold",
+		fontSize: "150%",
+		textAlign: "center",
+		alignSelf: 'stretch',
+		backgroundColor: "#decbc3",
+		padding: "10px",
 	},
 	bookCover: {
 		width: 200,
@@ -109,7 +117,7 @@ const styles = StyleSheet.create({
 		alignSelf: 'stretch',
 		fontFamily: "Lucida Sans",
 		backgroundColor: "thistle",
-		margin: "5px",
+		padding: "5px",
 	},
 	bookTitle: {
 		fontWeight: "bold",
@@ -125,5 +133,5 @@ const styles = StyleSheet.create({
 	},
 	boldText: {
 		fontWeight: "bold",
-	}
+	},
 });
