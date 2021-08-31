@@ -76,11 +76,20 @@ export default function App() {
 							<Text>{book.primary_isbn10}</Text>
 						</Text>
 
+						{/* {buy_links.map((link) => {
+							const { name, url } = link
+
+							return (
+								<View>
+									<Text>{link.name}{"\n\n"}</Text>
+								</View>
+							)
+						})} */}
+
 					</View>
 
 				)
 			})}
-
 
 			<StatusBar style="auto" />
 		</View>
@@ -108,7 +117,7 @@ const styles = StyleSheet.create({
 		width: 200,
 		height: 300,
 		margin: "20px",
-		
+
 	},
 	bookRanking: {
 		fontWeight: "bold",
