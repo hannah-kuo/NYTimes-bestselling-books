@@ -20,19 +20,19 @@ export default function App() {
 			// console.log(booksPromise) 
 			return booksPromise // books is a promise
 		}
-	
-		
+
+
 		fetchBooks().then(booksResults => {
 			console.log(booksResults.results.books); // this is the books object
 			setBooks(booksResults.results.books);
-			
+
 			// return books.results;
 		});
 
 	}, [])
 
 	console.log(books)
-	
+
 
 	return (
 		<View style={styles.container}>
@@ -41,32 +41,43 @@ export default function App() {
 
 			{books.map((book) => {
 				const {
-					author, 
-					book_image, 
-					buy_links, 
-					description, 
-					price, 
-					primary_isbn10, 
-					publisher, 
-					rank, 
-					title, 
-					rank_last_week, 
-					weeks_on_list} = book
+					author,
+					book_image,
+					buy_links,
+					description,
+					price,
+					primary_isbn10,
+					publisher,
+					rank,
+					title,
+					rank_last_week,
+					weeks_on_list } = book
 				// const { rank, title } = book
 
 				return (
 
 					<View key={rank} style={styles.container}>
-						<Text>{book.title}</Text>
-						<Text>Description: {book.description}</Text>
+
+						<Text style={styles.bookRanking}>Ranking: #{book.rank}</Text>
 						<Image
 							style={styles.bookCover}
-							source={{uri: book.book_image}}
-							
+							source={{ uri: book.book_image }}
 						/>
 
+						<Text style={styles.bookTitle}>{book.title}{"\n\n"}</Text>
+						<Text style={styles.bookInfo}>{book.description}{"\n\n"}</Text>
+
+						<Text style={styles.bookInfo}>
+							<Text style={styles.boldText}>Author: </Text>
+							<Text>{book.author}{"\n"}</Text>
+							<Text style={styles.boldText}>Publisher: </Text>
+							<Text>{book.publisher}{"\n"}</Text>
+							<Text style={styles.boldText}>ISBN: </Text>
+							<Text>{book.primary_isbn10}</Text>
+						</Text>
+
 					</View>
-					
+
 				)
 			})}
 
@@ -78,13 +89,41 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	container: {
+		// fontFamily: "verdana",
 		flex: 1,
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
+		margin: "20px",
 	},
 	bookCover: {
 		width: 200,
 		height: 300,
-	  },
+		margin: "20px",
+		
+	},
+	bookRanking: {
+		fontWeight: "bold",
+		fontSize: "150%",
+		textAlign: "center",
+		alignSelf: 'stretch',
+		fontFamily: "Lucida Sans",
+		backgroundColor: "thistle",
+		margin: "5px",
+	},
+	bookTitle: {
+		fontWeight: "bold",
+		fontSize: "150%",
+		textAlign: "center",
+		alignSelf: 'stretch',
+		fontFamily: "Lucida Sans",
+	},
+	bookInfo: {
+		textAlign: "center",
+		alignSelf: 'stretch',
+		fontFamily: "Lucida Sans",
+	},
+	boldText: {
+		fontWeight: "bold",
+	}
 });
