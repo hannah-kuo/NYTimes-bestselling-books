@@ -17,21 +17,15 @@ export default function App() {
 		async function fetchBooks() {
 			const response = await fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=BB8BqGACHA9HPxtAblxoX55uesGNfYKj');
 			const booksPromise = await response.json();
-			// console.log(booksPromise) 
-			return booksPromise // books is a promise
+			return booksPromise // this is a promise
 		}
 
 
 		fetchBooks().then(booksResults => {
-			console.log(booksResults.results.books); // this is the books object
 			setBooks(booksResults.results.books);
-
-			// return books.results;
 		});
 
 	}, [])
-
-	console.log(books)
 
 
 	return (
@@ -45,46 +39,36 @@ export default function App() {
 					book_image,
 					buy_links,
 					description,
-					price,
 					primary_isbn10,
 					publisher,
 					rank,
 					title,
 					rank_last_week,
 					weeks_on_list } = book
-				// const { rank, title } = book
 
 				return (
 
 					<View key={rank} style={styles.container}>
 
-						<Text style={styles.bookRanking}>Ranking: #{book.rank}</Text>
+						<Text style={styles.bookRanking}>Ranking: #{rank}</Text>
 						<Image
 							style={styles.bookCover}
-							source={{ uri: book.book_image }}
+							source={{ uri: book_image }}
 						/>
 
-						<Text style={styles.bookTitle}>{book.title}{"\n\n"}</Text>
-						<Text style={styles.bookInfo}>{book.description}{"\n\n"}</Text>
+						<Text style={styles.bookTitle}>{title}{"\n\n"}</Text>
+						<Text style={styles.bookInfo}>{description}{"\n\n"}</Text>
 
 						<Text style={styles.bookInfo}>
 							<Text style={styles.boldText}>Author: </Text>
-							<Text>{book.author}{"\n"}</Text>
+							<Text>{author}{"\n"}</Text>
 							<Text style={styles.boldText}>Publisher: </Text>
-							<Text>{book.publisher}{"\n"}</Text>
+							<Text>{publisher}{"\n"}</Text>
 							<Text style={styles.boldText}>ISBN: </Text>
-							<Text>{book.primary_isbn10}</Text>
+							<Text>{primary_isbn10}{"\n"}</Text>
+							<Text style={styles.boldText}>Weeks on List:: </Text>
+							<Text>{weeks_on_list}</Text>
 						</Text>
-
-						{/* {buy_links.map((link) => {
-							const { name, url } = link
-
-							return (
-								<View>
-									<Text>{link.name}{"\n\n"}</Text>
-								</View>
-							)
-						})} */}
 
 					</View>
 
@@ -104,6 +88,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		margin: "20px",
 	},
+
 	pageTitle: {
 		fontFamily: "Lucida Handwriting",
 		fontWeight: "bold",
@@ -113,12 +98,13 @@ const styles = StyleSheet.create({
 		backgroundColor: "#decbc3",
 		padding: "10px",
 	},
+
 	bookCover: {
 		width: 200,
 		height: 300,
 		margin: "20px",
-
 	},
+
 	bookRanking: {
 		fontWeight: "bold",
 		fontSize: "150%",
@@ -128,6 +114,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "thistle",
 		padding: "5px",
 	},
+
 	bookTitle: {
 		fontWeight: "bold",
 		fontSize: "150%",
@@ -135,11 +122,13 @@ const styles = StyleSheet.create({
 		alignSelf: 'stretch',
 		fontFamily: "Lucida Sans",
 	},
+
 	bookInfo: {
 		textAlign: "center",
 		alignSelf: 'stretch',
 		fontFamily: "Lucida Sans",
 	},
+	
 	boldText: {
 		fontWeight: "bold",
 	},
