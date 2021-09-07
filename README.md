@@ -1,2 +1,2 @@
 # NYTimes-bestselling-books
-New York Times Bestselling Books app built with React Native
+React Native books application to showcase the weeklytop 15 bestselling hardcover novels on the New York Times chart
