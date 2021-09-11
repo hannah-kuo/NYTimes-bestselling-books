@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
 // const url = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=yourkey`
 
@@ -33,6 +33,10 @@ export default function App() {
 
 			<Text style={styles.pageTitle}>The New York Times Weekly Bestselling Hardcover Fiction:</Text>
 			
+
+			<ScrollView>
+
+
 			{books.map((book) => {
 				const {
 					author,
@@ -74,6 +78,7 @@ export default function App() {
 
 				)
 			})}
+			</ScrollView>
 
 			<StatusBar style="auto" />
 		</View>
@@ -92,7 +97,7 @@ const styles = StyleSheet.create({
 	pageTitle: {
 		fontFamily: "Lucida Handwriting",
 		fontWeight: "bold",
-		fontSize: "150%",
+		fontSize: 15,
 		textAlign: "center",
 		alignSelf: 'stretch',
 		backgroundColor: "#decbc3",
@@ -107,7 +112,7 @@ const styles = StyleSheet.create({
 
 	bookRanking: {
 		fontWeight: "bold",
-		fontSize: "150%",
+		fontSize: 15,
 		textAlign: "center",
 		alignSelf: 'stretch',
 		fontFamily: "Lucida Sans",
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
 
 	bookTitle: {
 		fontWeight: "bold",
-		fontSize: "150%",
+		fontSize: 15,
 		textAlign: "center",
 		alignSelf: 'stretch',
 		fontFamily: "Lucida Sans",
